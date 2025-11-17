@@ -5,6 +5,10 @@
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.109.0-009688.svg?style=flat&logo=FastAPI&logoColor=white)](https://fastapi.tiangolo.com)
 [![Python](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![GitHub Stars](https://img.shields.io/github/stars/MichaelTheAnalyst/fraud-detection-dashboard-api?style=social)](https://github.com/MichaelTheAnalyst/fraud-detection-dashboard-api/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/MichaelTheAnalyst/fraud-detection-dashboard-api?style=social)](https://github.com/MichaelTheAnalyst/fraud-detection-dashboard-api/network/members)
+
+> 🌟 **[View on GitHub](https://github.com/MichaelTheAnalyst/fraud-detection-dashboard-api)** | 📖 **[Documentation](https://github.com/MichaelTheAnalyst/fraud-detection-dashboard-api#readme)** | 🐛 **[Report Issues](https://github.com/MichaelTheAnalyst/fraud-detection-dashboard-api/issues)**
 
 ---
 
