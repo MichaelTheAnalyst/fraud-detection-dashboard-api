@@ -398,3 +398,15 @@ curl http://localhost:8000/api/v1/analytics/customer-experience
            Production-Ready API v1.0.0
 ```
 
+---
+
+## 👨‍💻 **Author**
+
+**Masood Nazari**  
+Business Intelligence Analyst | Data Science | AI | Clinical Research
+
+📧 Email: M.Nazari@soton.ac.uk  
+🌐 Portfolio: https://michaeltheanalyst.github.io/  
+💼 LinkedIn: [linkedin.com/in/masood-nazari](https://linkedin.com/in/masood-nazari)  
+🔗 GitHub: [github.com/michaeltheanalyst](https://github.com/michaeltheanalyst)
+

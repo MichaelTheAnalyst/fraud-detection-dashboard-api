@@ -93,6 +93,15 @@ app = FastAPI(
     - Pandas (data processing)
     - Pydantic (data validation)
     - Graph algorithms (network analysis)
+    
+    ## 👨‍💻 Author
+    **Masood Nazari**  
+    Business Intelligence Analyst | Data Science | AI | Clinical Research
+    
+    📧 M.Nazari@soton.ac.uk  
+    🌐 https://michaeltheanalyst.github.io/  
+    💼 linkedin.com/in/masood-nazari  
+    🔗 github.com/michaeltheanalyst
     """,
     docs_url="/docs",
     redoc_url="/redoc",

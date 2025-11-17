@@ -1,5 +1,9 @@
 """
 Configuration settings for the Fraud Detection Dashboard Backend
+
+Author: Masood Nazari
+Business Intelligence Analyst | Data Science | AI | Clinical Research
+GitHub: github.com/michaeltheanalyst
 """
 import os
 from pathlib import Path

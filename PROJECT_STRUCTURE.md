@@ -389,5 +389,17 @@ Add more origins in `backend/config.py`
 
 ---
 
+---
+
+## 👨‍💻 **Author**
+
+**Masood Nazari**  
+Business Intelligence Analyst | Data Science | AI | Clinical Research
+
+📧 Email: M.Nazari@soton.ac.uk  
+🌐 Portfolio: https://michaeltheanalyst.github.io/  
+💼 LinkedIn: [linkedin.com/in/masood-nazari](https://linkedin.com/in/masood-nazari)  
+🔗 GitHub: [github.com/michaeltheanalyst](https://github.com/michaeltheanalyst)
+
 **Built with ❤️ for fraud detection excellence!** 🚀
 

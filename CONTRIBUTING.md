@@ -80,7 +80,14 @@ python test_api.py
 
 ## Questions?
 
-Open an issue for discussion or reach out via GitHub!
+Open an issue for discussion or reach out to the maintainer:
+
+**Masood Nazari**  
+Business Intelligence Analyst | Data Science | AI | Clinical Research
+
+📧 Email: M.Nazari@soton.ac.uk  
+💼 LinkedIn: [linkedin.com/in/masood-nazari](https://linkedin.com/in/masood-nazari)  
+🔗 GitHub: [github.com/michaeltheanalyst](https://github.com/michaeltheanalyst)
 
 Thank you for contributing! 🚀
 

@@ -425,9 +425,15 @@ MIT License - feel free to use in your projects!
 
 ## 👨‍💻 Developer
 
-Built with ❤️ by a data science enthusiast
+**Masood Nazari**  
+*Business Intelligence Analyst | Data Science | AI | Clinical Research*
 
-**Tech Stack**: FastAPI • Python • Pandas • Pydantic • Uvicorn
+📧 Email: M.Nazari@soton.ac.uk  
+🌐 Portfolio: https://michaeltheanalyst.github.io/  
+💼 LinkedIn: [linkedin.com/in/masood-nazari](https://linkedin.com/in/masood-nazari)  
+🔗 GitHub: [github.com/michaeltheanalyst](https://github.com/michaeltheanalyst)
+
+Built with ❤️ using **FastAPI • Python • Pandas • Pydantic • Uvicorn**
 
 ---
 
