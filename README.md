@@ -61,14 +61,47 @@ Built to handle **5 million+ transactions** with sub-second response times.
 
 ## 🚀 Quick Start
 
-### Prerequisites
-- Python 3.9+
-- Dataset: `financial_fraud_detection_dataset.csv` in project root
+### **NEW: Automated Startup** ⚡
 
-### Installation
+Start both backend and frontend with ONE command:
 
 ```bash
-# 1. Clone or navigate to project directory
+# Recommended: Python script (all platforms)
+python start_dashboard.py
+
+# Or Windows batch file
+start_dashboard.bat
+
+# Or Unix shell script
+./start_dashboard.sh
+
+# Or npm
+npm start
+```
+
+**That's it!** Opens:
+- 📊 Dashboard at `http://localhost:3000`
+- 🔌 Backend API at `http://localhost:8000`
+- 📖 API Docs at `http://localhost:8000/docs`
+
+See [STARTUP_GUIDE.md](STARTUP_GUIDE.md) for details.
+
+---
+
+### Manual Installation (Optional)
+
+<details>
+<summary>Click to expand manual setup steps</summary>
+
+#### Prerequisites
+- Python 3.9+
+- Node.js 18+ (for frontend)
+- Dataset: `financial_fraud_detection_dataset.csv` in project root
+
+#### Backend Setup
+
+```bash
+# 1. Navigate to project directory
 cd "Financial Transactions Dataset for Fraud Detection"
 
 # 2. Create virtual environment (recommended)
@@ -80,12 +113,27 @@ venv\Scripts\activate
 # Mac/Linux
 source venv/bin/activate
 
-# 3. Install dependencies
+# 3. Install backend dependencies
 pip install -r requirements.txt
 
-# 4. Run the server
+# 4. Run the backend server
 uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000
 ```
+
+#### Frontend Setup
+
+```bash
+# 1. Navigate to frontend directory
+cd frontend
+
+# 2. Install dependencies
+npm install
+
+# 3. Start development server
+npm run dev
+```
+
+</details>
 
 ### Access the API
 

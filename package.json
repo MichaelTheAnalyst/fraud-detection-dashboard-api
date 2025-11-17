@@ -1,0 +1,33 @@
+{
+  "name": "fraud-detection-dashboard-fullstack",
+  "version": "1.0.0",
+  "description": "Full-stack fraud detection dashboard - Backend API + Frontend React",
+  "author": {
+    "name": "Masood Nazari",
+    "email": "M.Nazari@soton.ac.uk",
+    "url": "https://michaeltheanalyst.github.io/"
+  },
+  "scripts": {
+    "start": "python start_dashboard.py",
+    "start:backend": "python -m uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000",
+    "start:frontend": "cd frontend && npm run dev",
+    "install:frontend": "cd frontend && npm install",
+    "build:frontend": "cd frontend && npm run build",
+    "test:backend": "python test_api.py",
+    "setup": "pip install -r requirements.txt && cd frontend && npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MichaelTheAnalyst/fraud-detection-dashboard-api.git"
+  },
+  "keywords": [
+    "fraud-detection",
+    "dashboard",
+    "fastapi",
+    "react",
+    "machine-learning",
+    "data-analytics"
+  ],
+  "license": "MIT"
+}
+
