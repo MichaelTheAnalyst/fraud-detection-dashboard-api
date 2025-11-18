@@ -65,9 +65,11 @@ class DataLoader:
             
             self._data = pd.read_csv(
                 settings.DATA_FILE_PATH,
-                dtype=dtype_spec,
-                parse_dates=['timestamp']
+                dtype=dtype_spec
             )
+            
+            # Convert timestamp to datetime explicitly
+            self._data['timestamp'] = pd.to_datetime(self._data['timestamp'], errors='coerce')
             
             # Data preprocessing
             self._data = self._preprocess_data(self._data)
@@ -145,17 +147,30 @@ class DataLoader:
         if self._data is None:
             return {"loaded": False}
         
-        return {
-            "loaded": True,
-            "rows": len(self._data),
-            "loaded_at": self._loaded_at.isoformat() if self._loaded_at else None,
-            "date_range": {
-                "start": self._data['timestamp'].min().isoformat(),
-                "end": self._data['timestamp'].max().isoformat()
-            },
-            "fraud_count": int(self._data['is_fraud'].sum()),
-            "fraud_rate": float(self._data['is_fraud'].mean())
-        }
+        try:
+            min_date = self._data['timestamp'].min()
+            max_date = self._data['timestamp'].max()
+            
+            return {
+                "loaded": True,
+                "rows": len(self._data),
+                "loaded_at": self._loaded_at.isoformat() if self._loaded_at else None,
+                "date_range": {
+                    "start": min_date.isoformat() if pd.notna(min_date) else None,
+                    "end": max_date.isoformat() if pd.notna(max_date) else None
+                },
+                "fraud_count": int(self._data['is_fraud'].sum()),
+                "fraud_rate": float(self._data['is_fraud'].mean())
+            }
+        except Exception as e:
+            logger.error(f"Error getting data info: {str(e)}")
+            return {
+                "loaded": True,
+                "rows": len(self._data),
+                "loaded_at": self._loaded_at.isoformat() if self._loaded_at else None,
+                "fraud_count": int(self._data['is_fraud'].sum()),
+                "fraud_rate": float(self._data['is_fraud'].mean())
+            }
 
 
 # Global instance
