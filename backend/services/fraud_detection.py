@@ -88,18 +88,23 @@ class FraudDetectionService:
         
         critical_alerts = []
         for _, row in high_risk.iterrows():
+            # Handle NA/null values
+            fraud_type = row.get('fraud_type')
+            if pd.isna(fraud_type):
+                fraud_type = 'Unknown'
+            
             critical_alerts.append(HighRiskTransaction(
-                transaction_id=row['transaction_id'],
+                transaction_id=str(row['transaction_id']),
                 amount=float(row['amount']),
-                fraud_type=row.get('fraud_type', 'Unknown'),
-                location=row['location'],
-                device_used=row['device_used'],
+                fraud_type=str(fraud_type),
+                location=str(row['location']),
+                device_used=str(row['device_used']),
                 confidence=float(row['fraud_probability']),
                 time_since_last=float(row['time_since_last_transaction']),
                 timestamp=row['timestamp'],
                 risk_level=RiskLevel.CRITICAL if row['fraud_probability'] >= 0.9 else RiskLevel.HIGH,
-                sender_account=row['sender_account'],
-                receiver_account=row['receiver_account']
+                sender_account=str(row['sender_account']),
+                receiver_account=str(row['receiver_account'])
             ))
         
         # Count by priority
