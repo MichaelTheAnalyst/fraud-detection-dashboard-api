@@ -1,6 +1,7 @@
 {
   "name": "fraud-detection-dashboard",
   "version": "1.0.0",
+  "type": "module",
   "description": "Real-time fraud detection dashboard built with React",
   "author": {
     "name": "Masood Nazari",

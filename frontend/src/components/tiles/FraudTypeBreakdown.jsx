@@ -3,9 +3,7 @@ import { PieChart } from 'lucide-react';
 import { Card, CardHeader } from '../shared/Card';
 import { Badge } from '../shared/Badge';
 import { useFraudTypeBreakdown } from '../../hooks/useApi';
-import { PieChart as RechartsP
-
-ieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
+import { PieChart as RechartsPieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
 
 /**
  * Tile 4: Fraud Type Breakdown
