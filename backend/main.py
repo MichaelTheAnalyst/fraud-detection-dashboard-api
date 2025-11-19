@@ -120,12 +120,12 @@ if settings.DEBUG:
         allow_headers=["*"],
     )
 else:
-    # Production: Allow all origins (public API)
-    # Use regex to allow all Vercel domains (preview + production)
+    # Production: Allow ALL origins (public demo API)
+    # This ensures all Vercel preview deployments work
     app.add_middleware(
         CORSMiddleware,
-        allow_origin_regex=r"https://.*\.vercel\.app",  # All Vercel deployments
-        allow_credentials=False,  # Must be False when using regex
+        allow_origins=["*"],  # Allow all origins in production
+        allow_credentials=False,  # Must be False with allow_origins=["*"]
         allow_methods=["*"],
         allow_headers=["*"],
     )
