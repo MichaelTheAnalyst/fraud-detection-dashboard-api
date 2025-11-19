@@ -17,6 +17,15 @@ const API_BASE_URL = import.meta.env.VITE_API_URL ||
     : 'http://localhost:8000');
 const API_V1 = `${API_BASE_URL}/api/v1`;
 
+// Log API configuration (only in development)
+if (import.meta.env.MODE === 'development' || import.meta.env.DEV) {
+  console.log('🔧 API Configuration:');
+  console.log('  VITE_API_URL:', import.meta.env.VITE_API_URL);
+  console.log('  API_BASE_URL:', API_BASE_URL);
+  console.log('  API_V1:', API_V1);
+  console.log('  MODE:', import.meta.env.MODE);
+}
+
 // Create axios instance with default config
 const apiClient = axios.create({
   baseURL: API_V1,
@@ -44,7 +53,29 @@ apiClient.interceptors.response.use(
     return response;
   },
   (error) => {
-    console.error('API Response Error:', error.response || error);
+    // Enhanced error logging
+    if (error.response) {
+      // Server responded with error status
+      console.error(`❌ API Error [${error.response.status}]:`, {
+        url: error.config?.url,
+        method: error.config?.method,
+        status: error.response.status,
+        statusText: error.response.statusText,
+        data: error.response.data,
+      });
+    } else if (error.request) {
+      // Request made but no response (network error, CORS, timeout)
+      console.error('❌ API Network Error:', {
+        url: error.config?.url,
+        method: error.config?.method,
+        message: error.message,
+        code: error.code,
+        hint: 'Check if API is running and CORS is configured correctly',
+      });
+    } else {
+      // Something else happened
+      console.error('❌ API Error:', error.message);
+    }
     return Promise.reject(error);
   }
 );
