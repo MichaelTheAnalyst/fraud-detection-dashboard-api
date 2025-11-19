@@ -10,7 +10,11 @@
 import axios from 'axios';
 
 // Base API configuration
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+// Use production API by default, fallback to localhost for development
+const API_BASE_URL = import.meta.env.VITE_API_URL || 
+  (import.meta.env.MODE === 'production' 
+    ? 'https://fraud-detection-dashboard-api.onrender.com'
+    : 'http://localhost:8000');
 const API_V1 = `${API_BASE_URL}/api/v1`;
 
 // Create axios instance with default config
