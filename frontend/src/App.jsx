@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AlertTriangle, Activity, BarChart3, Shield, RefreshCw } from 'lucide-react';
 import ExecutiveOverview from './components/tiles/ExecutiveOverview';
 import HighRiskTransactions from './components/tiles/HighRiskTransactions';
@@ -24,6 +24,20 @@ function App() {
     (import.meta.env.MODE === 'production' 
       ? 'https://fraud-detection-dashboard-api.onrender.com'
       : 'http://localhost:8000');
+  
+  // Keep Render API awake - ping health endpoint every 10 minutes
+  useEffect(() => {
+    if (import.meta.env.MODE === 'production' && apiUrl.includes('onrender.com')) {
+      const keepAliveInterval = setInterval(() => {
+        // Ping health endpoint to keep Render awake
+        fetch(`${apiUrl}/health`)
+          .then(() => console.log('✅ Keep-alive ping successful'))
+          .catch(() => console.log('⚠️ Keep-alive ping failed (API may be sleeping)'));
+      }, 10 * 60 * 1000); // Every 10 minutes
+      
+      return () => clearInterval(keepAliveInterval);
+    }
+  }, [apiUrl]);
   
   return (
     <div className="min-h-screen bg-gray-50">

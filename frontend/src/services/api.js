@@ -29,7 +29,7 @@ if (import.meta.env.MODE === 'development' || import.meta.env.DEV) {
 // Create axios instance with default config
 const apiClient = axios.create({
   baseURL: API_V1,
-  timeout: 30000,
+  timeout: 60000,  // Increased to 60s to handle Render wake-up time
   headers: {
     'Content-Type': 'application/json',
   },
