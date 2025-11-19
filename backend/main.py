@@ -110,14 +110,25 @@ app = FastAPI(
 
 # Add CORS middleware
 # Allow all origins in production (public API), restrict in development
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"] if not settings.DEBUG else settings.BACKEND_CORS_ORIGINS,
-    allow_origin_regex=r"https://.*\.vercel\.app",  # Allow all Vercel preview deployments
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+if settings.DEBUG:
+    # Development: Use specific origins
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=settings.BACKEND_CORS_ORIGINS,
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+else:
+    # Production: Allow all origins (public API)
+    # Use regex to allow all Vercel domains (preview + production)
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origin_regex=r"https://.*\.vercel\.app",  # All Vercel deployments
+        allow_credentials=False,  # Must be False when using regex
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
 
 
 # Middleware for request logging and timing
