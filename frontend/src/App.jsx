@@ -17,7 +17,13 @@ import { useHealthCheck } from './hooks/useApi';
  */
 function App() {
   const [autoRefresh, setAutoRefresh] = useState(true);
-  const { data: healthData } = useHealthCheck();
+  const { data: healthData, error: healthError } = useHealthCheck();
+  
+  // Show API URL in development
+  const apiUrl = import.meta.env.VITE_API_URL || 
+    (import.meta.env.MODE === 'production' 
+      ? 'https://fraud-detection-dashboard-api.onrender.com'
+      : 'http://localhost:8000');
   
   return (
     <div className="min-h-screen bg-gray-50">
@@ -46,7 +52,19 @@ function App() {
                 <span className="text-sm text-gray-600">
                   {healthData?.status === 'healthy' ? 'System Online' : 'System Degraded'}
                 </span>
+                {healthError && (
+                  <span className="text-xs text-danger-600 ml-2" title={healthError.message}>
+                    (API Error)
+                  </span>
+                )}
               </div>
+              
+              {/* API URL Debug (only in development) */}
+              {import.meta.env.DEV && (
+                <div className="text-xs text-gray-500" title="API URL being used">
+                  API: {apiUrl.replace('https://', '').replace('http://', '').substring(0, 30)}...
+                </div>
+              )}
               
               {/* Auto-refresh Toggle */}
               <button

@@ -24,9 +24,23 @@ export const ExecutiveOverview = () => {
   }
   
   if (error) {
+    const errorMessage = error?.response?.data?.detail || error?.message || 'Unknown error';
+    const errorStatus = error?.response?.status;
+    const isNetworkError = !error?.response && error?.request;
+    const isCorsError = error?.message?.includes('CORS') || error?.code === 'ERR_NETWORK';
+    
     return (
-      <div className="card bg-danger-50 border-danger-200">
-        <p className="text-danger-700">Failed to load executive overview</p>
+      <div className="card bg-danger-50 border-danger-200 p-4">
+        <p className="text-danger-700 font-semibold mb-2">Failed to load executive overview</p>
+        <p className="text-sm text-danger-600 mb-1">
+          {isCorsError && '⚠️ CORS Error: API may not be configured correctly'}
+          {isNetworkError && '⚠️ Network Error: API may be sleeping or unreachable'}
+          {errorStatus && `Status: ${errorStatus}`}
+        </p>
+        <details className="text-xs text-danger-500 mt-2">
+          <summary className="cursor-pointer">Show error details</summary>
+          <pre className="mt-2 whitespace-pre-wrap">{JSON.stringify(errorMessage, null, 2)}</pre>
+        </details>
       </div>
     );
   }
