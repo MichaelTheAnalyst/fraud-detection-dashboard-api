@@ -109,9 +109,11 @@ app = FastAPI(
 )
 
 # Add CORS middleware
+# Allow all origins in production (public API), restrict in development
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.BACKEND_CORS_ORIGINS,
+    allow_origins=["*"] if not settings.DEBUG else settings.BACKEND_CORS_ORIGINS,
+    allow_origin_regex=r"https://.*\.vercel\.app",  # Allow all Vercel preview deployments
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

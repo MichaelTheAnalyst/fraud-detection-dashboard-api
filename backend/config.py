@@ -17,11 +17,23 @@ class Settings(BaseSettings):
     # App Configuration
     APP_NAME: str = "Fraud Detection Dashboard API"
     APP_VERSION: str = "1.0.0"
-    DEBUG: bool = True
+    DEBUG: bool = os.getenv("DEBUG", "False").lower() == "true"  # Default to False in production
     
     # API Configuration
     API_V1_PREFIX: str = "/api/v1"
-    BACKEND_CORS_ORIGINS: list = ["http://localhost:3000", "http://localhost:8000"]
+    # CORS Origins - Allow localhost for development and Vercel domains for production
+    # Can be overridden via environment variable BACKEND_CORS_ORIGINS (comma-separated)
+    _cors_origins_env: Optional[str] = os.getenv("BACKEND_CORS_ORIGINS")
+    BACKEND_CORS_ORIGINS: list = (
+        _cors_origins_env.split(",") if _cors_origins_env
+        else [
+            "http://localhost:3000",
+            "http://localhost:5173",  # Vite dev server
+            "http://localhost:8000",
+            "https://fraud-detection-dashboard-api.vercel.app",
+            "https://fraud-detection-dashboard-budlffetr-masood-nazaris-projects.vercel.app",
+        ]
+    )
     
     # Data Configuration
     DATA_FILE_PATH: str = os.path.join(
